@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.vitor.alcan.sonsdepeido.MainActivity">
+    <item
+        android:id="@+id/timer"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="Timer"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/avaliar"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Avaliar"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_baseline_share_24"
+        android:orderInCategory="100"
+        android:title="Compartilhar"
+        app:showAsAction="never" />
+
+</menu>
