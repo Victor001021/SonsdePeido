@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:orientation="vertical"
-    android:paddingTop="2dp"
+    android:paddingTop="5dp"
     tools:context=".MainActivity">
 
 
