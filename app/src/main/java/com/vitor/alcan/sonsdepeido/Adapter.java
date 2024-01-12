@@ -52,6 +52,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         this.interstitialAd = interstitialAd;
     }
 
+    public Adapter(List<Sons> peidos) {
+        this.peidos = peidos;
+    }
+
+    public Adapter(InterstitialAd interstitialAd) {
+        this.interstitialAd = interstitialAd;
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -59,6 +67,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
 
         return new MyViewHolder(opcoes);
+    }
+
+    public void setInterstitialAd(InterstitialAd interstitialAd) {
+        this.interstitialAd = interstitialAd;
+        notifyDataSetChanged();  // Notificar o RecyclerView sobre as alterações
     }
 
     @Override
@@ -72,6 +85,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             tocar(v.getContext());
 
         });
+
+
 
 
         holder.imageButtonCompartilhar.setOnClickListener(new View.OnClickListener() {
@@ -125,214 +140,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
 
     }
-
-
-//    public void tocar(Context c) {
-//        i++;
-//
-//        switch (opcoes) {
-//
-//            case 1:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido1);
-//                break;
-//            case 2:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido2);
-//                break;
-//            case 3:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido3);
-//                break;
-//            case 4:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido4);
-//                break;
-//            case 5:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido5);
-//                break;
-//            case 6:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido6);
-//                break;
-//            case 7:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido7);
-//                break;
-//            case 8:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido8);
-//                break;
-//            case 9:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido9);
-//                break;
-//            case 10:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido10);
-//                break;
-//            case 11:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido11);
-//                break;
-//            case 12:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido12);
-//                break;
-//            case 13:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido13);
-//                break;
-//            case 14:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido14);
-//                break;
-//            case 15:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido15);
-//                break;
-//            case 16:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido16);
-//                break;
-//            case 17:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido17);
-//                break;
-//
-//            case 18:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido18);
-//                break;
-//
-//            case 19:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido19);
-//                break;
-//
-//            case 20:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido20);
-//                break;
-//
-//            case 21:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido21);
-//                break;
-//
-//            case 22:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido22);
-//                break;
-//
-//            case 23:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido23);
-//                break;
-//
-//            case 24:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido24);
-//                break;
-//
-//            case 25:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido25);
-//                break;
-//
-//            case 26:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido26);
-//                break;
-//
-//            case 27:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido27);
-//                break;
-//
-//            case 28:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido28);
-//                break;
-//
-//
-//            case 29:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido29);
-//                break;
-//
-//
-//            case 30:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido30);
-//                break;
-//
-//            case 31:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido31);
-//                break;
-//
-//
-//            case 32:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido32);
-//                break;
-//
-//
-//            case 33:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido33);
-//                break;
-//
-//
-//            case 34:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido34);
-//                break;
-//
-//            case 35:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido35);
-//                break;
-//
-//
-//            case 36:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido36);
-//                break;
-//
-//            case 37:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido37);
-//                break;
-//
-//            case 38:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido38);
-//                break;
-//
-//            case 39:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido39);
-//                break;
-//
-//            case 40:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido40);
-//                break;
-//
-//            case 41:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido41);
-//                break;
-//
-//            case 42:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido42);
-//                break;
-//
-//            case 43:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido43);
-//                break;
-//
-//            case 44:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido44);
-//                break;
-//
-//            case 45:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido45);
-//                break;
-//
-//            case 46:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido46);
-//                break;
-//
-//            case 47:
-//                mediaPlayer = MediaPlayer.create(c, R.raw.peido47);
-//                break;
-//
-//
-//        }
-//
-//        if (mediaPlayer != null) {
-//            mediaPlayer.start();
-//            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//                @Override
-//                public void onCompletion(MediaPlayer mediaPlayer) {
-//
-////                    if (i == 8) {
-////                        if (mInterstitialAd != null) {
-////                            mInterstitialAd.show(MainActivity.this);
-////                        } else {
-////                            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-////                        }
-////                        i = 0;
-////                    }
-//
-//                    mediaPlayer.release();
-//                }
-//            });
-//        }
-//    }
 
     public void tocar(Context c) {
         i++;

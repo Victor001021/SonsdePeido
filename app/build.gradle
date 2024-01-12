@@ -14,7 +14,7 @@ android {
         applicationId "com.vitor.alcan.sonsdepeido"
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 10
+        versionCode 11
         versionName "2.0"
 
         multiDexEnabled true

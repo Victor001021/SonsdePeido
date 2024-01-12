@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Adapter adapter;
     private AdView madView;
     private InterstitialAd mInterstitialAd;
-    private ProgressBar progressBar;
+
 
 
     private List<Sons> listaPeidos = new ArrayList<>();
@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Sons sons = new Sons();
 
-        progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.VISIBLE);
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -64,12 +62,10 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
+        adapter = new Adapter(listaPeidos);
+        recyclerView.setAdapter(adapter);
 
-
-        /**
-         * ca-app-pub-1530737633748031/9024190155
-         * ca-app-pub-1530737633748031/9024190155
-         */
+        setupRecyclerView();
 
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -88,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void setupRecyclerView() {
+        // Carregar lista de peidos
+        carregarListas();
+
+        // Configurar adaptador
+        adapter = new Adapter(listaPeidos, null);  // O segundo parâmetro (InterstitialAd) será atualizado posteriormente
+        recyclerView.setAdapter(adapter);
+    }
 
     public void carregarListas() {
         for (int i = 1; i <= 47; i++) {
@@ -112,13 +116,6 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         madView.pause();
-//
-//        if (mInterstitialAd != null) {
-//            mInterstitialAd.show(MainActivity.this);
-//
-//        } else {
-//            Log.d("TAG", "The interstitial ad wasn't ready yet.");
-//        }
     }
 
     @Override
@@ -148,9 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 mInterstitialAd = interstitialAd;
                 Log.i("TAG", "onAdLoaded");
 
-                adapter = new Adapter(listaPeidos, mInterstitialAd);
-                recyclerView.setAdapter(adapter);
-                progressBar.setVisibility(View.GONE);
+                adapter.setInterstitialAd(mInterstitialAd);
 
 
                 mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
@@ -184,9 +179,8 @@ public class MainActivity extends AppCompatActivity {
                 // Handle the error
                 Log.i("TAG", loadAdError.getMessage());
                 mInterstitialAd = null;
-                adapter = new Adapter(listaPeidos, null);
-                recyclerView.setAdapter(adapter);
-                progressBar.setVisibility(View.GONE);
+                adapter.setInterstitialAd(null);
+
 
             }
         });
@@ -243,8 +237,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         intent.setType("text/plain");
-        //intent.setType("text/plain");
-        // intent.setType("image/*");
 
         startActivity(Intent.createChooser(intent, "Compartilhar"));
 
