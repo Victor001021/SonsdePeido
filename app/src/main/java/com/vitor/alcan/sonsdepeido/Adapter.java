@@ -93,8 +93,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
 
-
-                // Obter o caminho do recurso de áudio na pasta raw
                 Sons som = peidos.get(position);
 
 

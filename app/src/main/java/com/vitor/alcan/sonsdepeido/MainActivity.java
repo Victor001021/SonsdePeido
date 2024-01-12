@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdError;
@@ -37,10 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private AdView madView;
     private InterstitialAd mInterstitialAd;
 
-
+    private LinearLayout linearLayout;
 
     private List<Sons> listaPeidos = new ArrayList<>();
-    private int opcoes = 0, i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recyclerView);
+        linearLayout = findViewById(R.id.linearLayout);
 
 
         this.carregarListas();
 
-
-        //configura recycler view
-        /*RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);*/
 
         GridLayoutManager manager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(manager);
@@ -66,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         setupRecyclerView();
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 && linearLayout.getPaddingTop() > 0) {
+                    linearLayout.setPadding(0, 0, 0, 0);
+                } else if (dy < 0 && linearLayout.getPaddingTop() == 0) {
+                    linearLayout.setPadding(0, 5, 0, 0);
+                }
+            }
+        });
 
 
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
