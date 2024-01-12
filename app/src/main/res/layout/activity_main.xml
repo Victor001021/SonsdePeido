@@ -25,7 +25,6 @@
             ads:adUnitId="ca-app-pub-1530737633748031/9024190155"
             ads:layout_constraintEnd_toEndOf="parent"
             ads:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone"
             ads:layout_constraintTop_toTopOf="parent"></com.google.android.gms.ads.AdView>
 
         <androidx.recyclerview.widget.RecyclerView
