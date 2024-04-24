@@ -96,7 +96,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 Sons som = peidos.get(position);
 
 
-                String audioResourceName = "peido" + som.getSons(); // substitua pelo nome do seu arquivo de áudio
+                String audioResourceName = "peido" + som.getSons();
                 int audioResourceId = view.getResources().getIdentifier(audioResourceName, "raw", view.getContext().getPackageName());
 
                 // Criar um InputStream para ler o arquivo de áudio raw

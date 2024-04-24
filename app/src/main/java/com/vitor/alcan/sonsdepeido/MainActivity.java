@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupRecyclerView() {
         // Carregar lista de peidos
-        carregarListas();
+//        carregarListas();
 
         // Configurar adaptador
         adapter = new Adapter(listaPeidos, null);  // O segundo parâmetro (InterstitialAd) será atualizado posteriormente
